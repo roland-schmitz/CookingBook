@@ -1,17 +1,17 @@
-    //
-    //  File.swift
-    //  PuzzleBook
-    //
-    //  Created by Roland Schmitz on 06.06.22.
-    //
+//
+//  File.swift
+//  PuzzleBook
+//
+//  Created by Roland Schmitz on 06.06.22.
+//
 
 import Foundation
 import SwiftUI
 
+
 struct RecipeCollectionView: View {
     let collection: RecipeCollection
-    @Binding var categorySelection: String?
-    @Binding var recipeSelection: String?
+    @EnvironmentObject var navigation: NavigationModel
     
     var body: some View {
         NavigationView {
@@ -19,8 +19,8 @@ struct RecipeCollectionView: View {
                 ForEach(collection.categories, id: \.title) { recipeList in
                     NavigationLink(
                         tag: recipeList.title,
-                        selection: $categorySelection,
-                        destination: { RecipesCategoryView(category: recipeList, recipeSelection: $recipeSelection) },
+                        selection: $navigation.categorySelection,
+                        destination: { RecipesCategoryView(category: recipeList) },
                         label: { Text(recipeList.title) }
                     )
                 }
@@ -31,14 +31,14 @@ struct RecipeCollectionView: View {
 
 struct RecipesCategoryView: View {
     let category: RecipeCategory
-    @Binding var recipeSelection: String?
+    @EnvironmentObject var navigation: NavigationModel
     
     var body: some View {
         List {
             ForEach(category.recipes, id: \.title) { recipe in
                 NavigationLink(
                     tag: recipe.title,
-                    selection: $recipeSelection,
+                    selection: $navigation.recipeSelection,
                     destination: { RecipeView(recipe: recipe) },
                     label: { Text(recipe.title) }
                 )
@@ -65,4 +65,3 @@ struct RecipeView: View {
         .navigationBarTitle(recipe.title)
     }
 }
-

@@ -9,36 +9,35 @@ import Foundation
 import SwiftUI
 
 struct ShortcutButtons: View {
-    @Binding var categorySelection: String?
-    @Binding var recipeSelection: String?
+    @EnvironmentObject var navigation: NavigationModel
 
     var body: some View {
         VStack {
             Button("Categories") {
                 print("Categories")
-                categorySelection = nil
-                recipeSelection = nil
+                navigation.categorySelection = nil
+                navigation.recipeSelection = nil
             }
             .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
             HStack {
                 VStack {
                     Button("Starters") {
                         print("Starters")
-                        recipeSelection = nil
-                        // categorySelection = "Starters"
+                        navigation.recipeSelection = nil
+                        navigation.categorySelection = "Starters"
                     }
                     .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
                     HStack {
                         Button("Bruschetta") {
                             print("Bruschetta")
-                            categorySelection = "Starters"
-                            recipeSelection = "Bruschetta"
+                            navigation.categorySelection = "Starters"
+                            navigation.recipeSelection = "Bruschetta"
                         }
                         .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
                         Button("Caprese") {
                             print("Caprese")
-                            categorySelection = "Starters"
-                            recipeSelection = "Mozzarella Caprese"
+                            navigation.categorySelection = "Starters"
+                            navigation.recipeSelection = "Mozzarella Caprese"
                         }
                         .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
                     }
@@ -46,21 +45,21 @@ struct ShortcutButtons: View {
                 VStack {
                     Button("Main Dishes") {
                         print("Main Dishes")
-                        categorySelection = "Main Dishes"
-                        recipeSelection = nil
+                        navigation.categorySelection = "Main Dishes"
+                        navigation.recipeSelection = nil
                     }
                     .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
                     HStack {
                         Button("Carbonara") {
                             print("Carbonara")
-                            categorySelection = "Main Dishes"
-                            recipeSelection = "Spaghetti Carbonara"
+                            navigation.categorySelection = "Main Dishes"
+                            navigation.recipeSelection = "Spaghetti Carbonara"
                         }
                         .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
                         Button("Bolognese") {
                             print("Bolognese")
-                            categorySelection = "Main Dishes"
-                            recipeSelection = "Ragu alla Bolognese"
+                            navigation.categorySelection = "Main Dishes"
+                            navigation.recipeSelection = "Ragu alla Bolognese"
                         }
                         .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
                     }
