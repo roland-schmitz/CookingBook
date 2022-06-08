@@ -55,10 +55,10 @@ struct RecipeView: View {
             Section {
                 Text(recipe.info ?? "Some basic information about the recipe will be given here")
             }
-            Section("Ingredients") {
+            Section(header: Text("Ingredients")) {
                 Text(recipe.ingredients ?? "The ingredients will be listed here" )
             }
-            Section("Preparation") {
+            Section(header: Text("Preparation")) {
                 Text(recipe.preparation ?? "Detailled instructions how to prepare the dish are expected here")
             }
         }
