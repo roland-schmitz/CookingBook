@@ -9,36 +9,31 @@ import Foundation
 import SwiftUI
 
 struct ShortcutButtons: View {
-    @Binding var categorySelection: String?
-    @Binding var recipeSelection: String?
+    @Binding var selection: NavigationSelection
 
     var body: some View {
         VStack {
             Button("Categories") {
                 print("Categories")
-                categorySelection = nil
-                recipeSelection = nil
+                selection = NavigationSelection(category: nil, recipe: nil)
             }
             .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
             HStack {
                 VStack {
                     Button("Starters") {
                         print("Starters")
-                        recipeSelection = nil
-                        // categorySelection = "Starters"
+                        selection = NavigationSelection(category: "Starters", recipe: nil)
                     }
                     .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
                     HStack {
                         Button("Bruschetta") {
                             print("Bruschetta")
-                            categorySelection = "Starters"
-                            recipeSelection = "Bruschetta"
+                            selection = NavigationSelection(category: "Starters", recipe: "Bruschetta")
                         }
                         .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
                         Button("Caprese") {
                             print("Caprese")
-                            categorySelection = "Starters"
-                            recipeSelection = "Mozzarella Caprese"
+                            selection = NavigationSelection(category: "Starters", recipe: "Mozzarella Caprese")
                         }
                         .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
                     }
@@ -46,21 +41,18 @@ struct ShortcutButtons: View {
                 VStack {
                     Button("Main Dishes") {
                         print("Main Dishes")
-                        categorySelection = "Main Dishes"
-                        recipeSelection = nil
+                        selection = NavigationSelection(category: "Main Dishes", recipe: nil)
                     }
                     .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
                     HStack {
                         Button("Carbonara") {
                             print("Carbonara")
-                            categorySelection = "Main Dishes"
-                            recipeSelection = "Spaghetti Carbonara"
+                            selection = NavigationSelection(category: "Main Dishes", recipe: "Spaghetti Carbonara")
                         }
                         .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
                         Button("Bolognese") {
                             print("Bolognese")
-                            categorySelection = "Main Dishes"
-                            recipeSelection = "Ragu alla Bolognese"
+                            selection = NavigationSelection(category: "Main Dishes", recipe: "Ragu alla Bolognese")
                         }
                         .padding(5).background(Color(.systemGray6)).cornerRadius(10).padding(5)
                     }
